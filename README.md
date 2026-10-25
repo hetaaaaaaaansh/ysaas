@@ -2,19 +2,33 @@
 
 A local command-line tool for monitoring YouTube channels, downloading eligible vertical videos, and uploading them to a YouTube channel. Credit and a source link do not grant permission.
 
-Uploads start as **private**. This is a community project, not an official YouTube or Google product.
+Uploads by default as **private**. This is a community project, not an official YouTube or Google product.
+
+```text
+ysaas setup                  # configuration
+ysaas auth                   # authorize the upload account(channel)
+ysaas channels add NAME ID   # add a permitted source channel
+ysaas channels list          # list configured source channels
+ysaas doctor                 # check setup
+ysaas run                    # download, then upload
+ysaas status                 # daily totals and backlog
+ysaas logs                   # recent local log entries
+ysaas retry                  # reset failed items
+ysaas menu                   # interactive command menu
+```
+
 
 ## Per-user Google setup
 
-Each user configures their own installation and authorizes their own channel upload. The app does not share credentials between users.
+Each user configures their own installation and authorizes uploads to channel they own or manage. The app does not share credentials between users.
 
 - **OAuth client JSON:** Create a Google Cloud project, enable YouTube Data API v3, create an OAuth client ID for a Desktop app, and provide that downloaded JSON to `ysaas setup`.
 - **Upload channel:** Setup records the intended channel name or URL as a reminder. `ysaas auth` opens Google sign-in; use the Google account/channel that manages that destination and verify it before granting access. The profile name keeps token files separate. The Data API uploads to the channel associated with the authorized account; the reminder does not route uploads or switch channels within an account.
-- **Source channels:** Add a channel ID, URL, or @handle. Only add channels whose videos you have permission to download and re-upload.
+- **Source channels:** Add a channel ID, URL, or @handle. Only add channels whose videos you have permission to dowload and reuse.
 
 The OAuth client JSON and user token stay in the local config directory and are excluded by `.gitignore`. Never commit them or share a token file. Revoke exposed credentials in Google Cloud.
 
-## Install
+## Requirements
 
 Requires Python 3.10+ and [FFmpeg](https://ffmpeg.org/) on PATH.
 
@@ -31,18 +45,6 @@ In Google Cloud, enable YouTube Data API v3 and create an OAuth client ID with a
 
 An API key is deliberately not requested because it cannot authorize uploads. Do not paste an API key in place of the OAuth JSON.
 
-```text
-ysaas setup                  # configuration
-ysaas auth                   # authorize the upload account(channel)
-ysaas channels add NAME ID   # add a permitted source channel
-ysaas channels list          # list configured source channels
-ysaas doctor                 # check setup
-ysaas run                    # download, then upload
-ysaas status                 # daily totals and backlog
-ysaas logs                   # recent local log entries
-ysaas retry                  # reset failed items
-ysaas menu                   # interactive command menu
-```
 
 Use `--config PATH` or `YSAAS_CONFIG` to select a different settings file. Logs are written to `logs/ysaas.log` with rotation. Optional Discord alerts report run summaries and stop conditions. Anyone with the webhook URL can post to that channel; keep it in the ignored local settings file. Notification failure does not stop a run.
 
