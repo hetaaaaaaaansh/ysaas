@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ysaas"
+version = "0.1.0"
+description = "Terminal tool that monitors YouTube channels you have permission to reuse, downloads their Shorts, and uploads them to your own channel."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "feedparser>=6.0",
+    "yt-dlp>=2024.1.0",
+    "google-auth-oauthlib>=1.0",
+    "google-api-python-client>=2.100",
+    "typer>=0.12",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+ysaas = "ysaas.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,23 @@
+# Secrets: never commit these
+config/settings.json
+config/client_secret*.json
+config/tokens/
+config/token*.json
+config/token*.pickle
+.env
+
+# Runtime data
+data/
+logs/
+downloads/
+*.db
+*.mp4
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.egg-info/
+build/
+dist/
+.pytest_cache/

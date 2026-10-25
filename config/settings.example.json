@@ -1,0 +1,17 @@
+{
+  "download_folder": "downloads",
+  "quality": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
+  "max_duration_seconds": 180,
+  "max_downloads_per_day": 5,
+  "max_uploads_per_day": 5,
+  "backlog_pause_threshold": 20,
+  "max_attempts": 3,
+  "upload_privacy": "private",
+  "credit_sources": true,
+  "delete_after_upload": true,
+  "target_channel": "main",
+  "upload_channel": "",
+  "discord_webhook": "",
+  "channels": []
+}
+
