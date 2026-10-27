@@ -16,7 +16,22 @@ ysaas logs                   # recent local log entries
 ysaas retry                  # reset failed items
 ysaas menu                   # interactive command menu
 ```
+## Install
 
+Requires Python 3.10+ and [FFmpeg](https://ffmpeg.org/) on PATH.
+
+```bash
+pip install ysaas
+```
+OR
+```bash
+pipx install ysaas
+```
+
+Then run:
+```bash
+ysaas setup
+```
 
 ## Per-user Google setup
 
